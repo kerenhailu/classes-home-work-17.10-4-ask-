@@ -73,10 +73,21 @@ class Settlement {
     return `${this.name} ${this.residents} `;
   }
   //! מחזירה את האובייקט עם מספר התושבים הגדול ביות
-  static MostResidents() {
-    return Math.max(this.residents);
+  //!עובדדדדדד
+  static MostResidents(array) {
+    let maxResidents = 0;
+      let objectPeople = null;
+      for (let i = 0; i < array.length; i++) {
+        if (array[i].residents > maxResidents) {
+          maxResidents = array[i].residents;
+          objectPeople = array[i];
+        }
+      }
+    
+      return objectPeople;
+    }
   }
-}
+
 
 class City extends Settlement {
   funText() {
@@ -98,8 +109,8 @@ class Village extends Settlement {
 
 let Settlement_One = new Settlement("lod", 55);
 let Country1 = new Country("lod", 55);
-let City1 = new City("asdod", 20);
-let Village1 = new Village("lolo", 10);
+let City1 = new City("Asdod", 20);
+let Village1 = new Village("bilo", 10);
 
 btnInput.onclick = () => {
   let Settlement_Two = new Settlement(NameInput.value, residentsInput.value);
@@ -108,7 +119,7 @@ btnInput.onclick = () => {
   }
   console.log(Settlement_Two);
   console.log(Settlement_One.Text());
-  console.log(Settlement.MostResidents());
+  console.log(Settlement.MostResidents([Country1,City1,Village1]));
   console.log(Country1.funText());
   console.log(City1.funText());
   console.log(Village1.funText());
